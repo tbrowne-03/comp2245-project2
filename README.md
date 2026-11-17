@@ -1,17 +1,28 @@
-# COMP2245 Lab 2
+# COMP2245 Project 2: Fix-It Desk
 
-This is Lab 2 for Your Name.
+| Name | GitHub username | What they worked on |
+| --- | --- | --- |
+| Tajhere Browne | tbrowne-03 | schema.sql, .gitignore |
+| Ethan Watson | drftyit-bot | |
+| Emmore Baltimore | EBaltimoreTech24 | Repository README, merging setup |
+| D'Shonell Hughes | DShonellHughes | |
 
-A one-page personal blog built with semantic HTML and an external CSS stylesheet, using Grid for the page layout, Flexbox for the header and floats for the post images.
+## Running the app
 
-## Browsers tested
+```sh
+mysql -u root -p < schema.sql
+php -S localhost:8000
+```
 
-- Chrome (add version)
-- Firefox (add version)
-- Edge (add version)
+Open http://localhost:8000/. Run `schema.sql` again at any time to reset the data.
 
-Delete any browser you did not test.
+## Seed accounts
 
-## Image credits
+All use the password `password123`.
 
-All images in the `images` folder (`profile.svg`, `laptop.svg`, `landscape.svg`) are original SVG illustrations created for this lab. No outside sources were used.
+| Email | Name | Role |
+| --- | --- | --- |
+| admin@fixit.test | Admin User | admin |
+| member1@fixit.test | Emmore Baltimore | member |
+| member2@fixit.test | D'Shonell Hughes | member |
+| member3@fixit.test | Ethan Watson | member |
