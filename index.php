@@ -5,7 +5,6 @@ if (!current_user()) {
     header('Location: /login.php');
     exit;
 }
-
 $pageTitle = 'Tickets';
 require __DIR__ . '/includes/header.php';
 ?>

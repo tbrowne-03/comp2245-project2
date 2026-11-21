@@ -1,6 +1,7 @@
 <?php
 require __DIR__ . '/includes/bootstrap.php';
 
+
 //Go to ticket list if already logged in.
 if (current_user()) {
     header('Location: /index.php');

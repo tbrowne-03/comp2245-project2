@@ -4,7 +4,6 @@ require __DIR__ . '/includes/bootstrap.php';
 require_login();
 require_post_csrf();   // 405 if not POST, 403 if CSRF fails
 
-// Empty the session, delete the cookie, destroy the session.
 $_SESSION = [];
 
 if (ini_get('session.use_cookies')) {
