@@ -3,11 +3,7 @@
 | Name | GitHub username | What they worked on |
 | --- | --- | --- |
 | Tajhere Browne | tbrowne-03 | schema.sql, .gitignore |
-<<<<<<< HEAD
-| Ethan Watson | drftyit-bot | |
-=======
 | Ethan Watson | drftyit-bot |login.php, logout.php, index.php|
->>>>>>> login
 | Emmore Baltimore | EBaltimoreTech24 | Repository README, merging setup |
 | D'Shonell Hughes | DShonellHughes | |
 
@@ -29,8 +25,4 @@ All use the password `password123`.
 | admin@fixit.test | Admin User | admin |
 | member1@fixit.test | Emmore Baltimore | member |
 | member2@fixit.test | D'Shonell Hughes | member |
-<<<<<<< HEAD
 | member3@fixit.test | Ethan Watson | member |
-=======
-| member3@fixit.test | Ethan Watson | member |
->>>>>>> login
