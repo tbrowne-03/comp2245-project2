@@ -1,4 +1,4 @@
 config.php
 *.log
 .DS_Store
-Thumbs.dbconfig.php
+Thumbs.db
