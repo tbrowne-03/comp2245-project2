@@ -11,6 +11,7 @@ $currentPage = basename($_SERVER['SCRIPT_NAME']);
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="csrf-token" content="<?= e(csrf_token()) ?>">
     <title><?= e($pageTitle) ?> | Fix-It Desk</title>
+    <link rel="icon" href="data:,">
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
@@ -34,3 +35,6 @@ $currentPage = basename($_SERVER['SCRIPT_NAME']);
     </header>
 <?php endif; ?>
 <main class="container">
+<?php if (($flash = pull_flash()) !== null): ?>
+    <p class="flash" role="status"><?= e($flash) ?></p>
+<?php endif; ?>

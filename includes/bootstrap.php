@@ -128,3 +128,6 @@ function require_post_csrf_json(): void
         json_response(['ok' => false, 'error' => 'Invalid CSRF token.'], 403);
     }
 }
+
+// ---------- Shared helpers (dates, flash messages, ticket queries) ----------
+require __DIR__ . '/helpers.php';
