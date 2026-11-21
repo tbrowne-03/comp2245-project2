@@ -18,3 +18,13 @@ if (!$ticket){
   exit('Ticket cannot be found.');
 }
 //Checks whether it is an admin or the person who created the ticket
+if ($_SESSION['user']['role'] !== 'admin' && (int)$ticket['created_by'] !== (int)$_SESSION['user']['id']) {
+    http_response_code(403);
+    exit('Ticket cannot be found')
+}
+
+$stmt = $pdo->prepare('DELETE FROM tickets WHERE id = ?');
+$stmt ->execute([$ticket['id']]);
+flash_set('Ticket #' . $ticket['id']. 'was deleted.');
+header('Location: index.php');
+exit;
