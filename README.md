@@ -2,10 +2,10 @@
 
 | Name | GitHub username | What they worked on |
 | --- | --- | --- |
-| Tajhere Browne | tbrowne-03 | schema.sql, .gitignore |
+| Tajhere Browne | tbrowne-03 | schema.sql, .gitignore, final bug fixes and file editing |
 | Ethan Watson | drftyit-bot |login.php, logout.php, index.php|
 | Emmore Baltimore | EBaltimoreTech24 | README, merging setup, shared helpers, ticket list, new/edit ticket forms, stylesheet |
-| D'Shonell Hughes | DShonellHughes | |
+| D'Shonell Hughes | DShonellHughes | users.php, ticket-delete |
 
 ## Running the app
 

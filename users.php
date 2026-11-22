@@ -4,24 +4,25 @@ require_admin();
 
 $values = ['firstname' => '', 'lastname' => '', 'email' => '', 'role' => 'member'];
 $errors = [];
-
+$form = $values;
 if ($_SERVER['REQUEST_METHOD'] === 'POST'){
-  if (!csrf_valid())
+  if (!csrf_valid()) {
     http_response_code(403);
     exit('Invalid CSRF token.');
+}
 
   $values = [
-    'firstname' => trim((string)$_POST['firstname'] ?? '')),
-    'lastname' => trim((string)$_POST['lastname'] ?? '')),
-    'email' => trim((string)$_POST['email'] ?? '')),
-    'role' => (string)$_POST['role'] ?? '')
-  ];
-  $password = (string)$_POST['password'] ?? '');
+    'firstname' => trim((string)($_POST['firstname'] ?? '')),
+    'lastname'  => trim((string)($_POST['lastname'] ?? '')),
+    'email'     => trim((string)($_POST['email'] ?? '')),
+    'role'      => (string)($_POST['role'] ?? 'member'),
+];
+  $password = (string)($_POST['password'] ?? '');
 
-  if (!filter_var($value['email'], FILTER_VALIDATE_EMAIL)) $errors['email'] = 'Enter a valid email address.';
+  if (!filter_var($values['email'], FILTER_VALIDATE_EMAIL)) $errors['email'] = 'Enter a valid email address.';
   else{
-    $check = $pdo -> prepare('SELECT id FROM user WHERE email = ?');
-    $check -> exicute([$values['email']]);
+    $check = $pdo->prepare('SELECT id FROM users WHERE email = ?');
+    $check->execute([$values['email']]);
     if ($check -> fetch()) $errors['email'] = 'That email address is already taken.';
   }
   if (!in_array($values['role'], ['admin', 'member'], true)) $errors['role'] = 'Choose a role.';
@@ -29,14 +30,18 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST'){
   if (strlen($password) < 8 || !preg_match('/[A-Za-z]/', $password) || !preg_match('/[0-9]/', $password)) $errors['password'] = 'Use at least 8 characters and a number.';
 
   if (!$errors){
-    $hash = $password_hash($password, PASSWORD_DEFAULT);
+    $hash = password_hash($password, PASSWORD_DEFAULT);
     $insert = $pdo -> prepare('INSERT INTO users (firstname, lastname, email, password, role) VALUES (?, ?, ?, ?, ?)');
     $insert -> execute([$values['firstname'], $values['lastname'], $values['email'], $hash, $values['role']]);
     header('Location: user.php');
     exit;
   }
 }
-$user = $pdo -> query('SELECT id, firstname, lastname, email, role, created_at FROM user ORDER BY created_at DESC') -> fetchAll();
+$users = $pdo->query(
+    'SELECT id, firstname, lastname, email, role, created_at
+     FROM users
+     ORDER BY created_at DESC'
+)->fetchAll();
 $pageTitle = 'Manage Users';
 require __DIR__ . '/includes/header.php';
 ?>
@@ -45,7 +50,7 @@ require __DIR__ . '/includes/header.php';
   <div class = "page-heading">
     <div>
       <div class = "eyebrow"> ADMINISTRATION </div>
-      <h1> Mangage Users </h1>
+      <h1> Manage Users </h1>
       <p class = "muted">
         Add team membersand manage access to the Fix-It Desk.
       </p>
@@ -53,10 +58,8 @@ require __DIR__ . '/includes/header.php';
   </div>
   
   <?php if (!empty($_GET['added'])): ?>
-    <div class = "Alert Success">
-      A new user was added
-    </div>
-  <?php endif; ?>
+    <p class="flash">User added.</p>
+<?php endif; ?>
   <div class = "users-layout">
 
     <!-- Add User From -->
