@@ -4,7 +4,7 @@
 | --- | --- | --- |
 | Tajhere Browne | tbrowne-03 | schema.sql, .gitignore |
 | Ethan Watson | drftyit-bot |login.php, logout.php, index.php|
-| Emmore Baltimore | EBaltimoreTech24 | Repository README, merging setup |
+| Emmore Baltimore | EBaltimoreTech24 | README, merging setup, shared helpers, ticket list, new/edit ticket forms, stylesheet |
 | D'Shonell Hughes | DShonellHughes | |
 
 ## Running the app
