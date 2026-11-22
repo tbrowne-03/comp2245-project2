@@ -20,7 +20,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST'){
 
   if (!filter_var($value['email'], FILTER_VALIDATE_EMAIL)) $errors['email'] = 'Enter a valid email address.';
   else{
-    $check = $pdo -> prepare('SELECT id FROM users WHERE email = ?');
+    $check = $pdo -> prepare('SELECT id FROM user WHERE email = ?');
     $check -> exicute([$values['email']]);
     if ($check -> fetch()) $errors['email'] = 'That email address is already taken.';
   }
